@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -8,6 +9,17 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
+      },
+      {
+        type: 'javascript/auto',
+        test: /\.json$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {}
+          }
+        ],
+         include: /\.\/config/
       },
       {
         test: /\.html$/,
@@ -24,5 +36,10 @@ module.exports = {
       template: "./src/index.html",
       filename: "./index.html"
     })
-  ]
+  ],
+  devServer: {
+    port: 8999,
+   historyApiFallback: true,
+   inline: true
+ }
 };
