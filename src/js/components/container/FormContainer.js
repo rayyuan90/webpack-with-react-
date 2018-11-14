@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Input from "../presentational/Input";
+import config from './../../../config.json';
 class FormContainer extends Component {
   constructor() {
     super();
@@ -14,14 +14,15 @@ class FormContainer extends Component {
   }
   render() {
     const { seo_title } = this.state;
+    console.log(config);
     return (
       <form id="article-form">
         <Input
-          text="SEO 标题"
-          label="seo_title"
-          type="text"
-          id="seo_title"
-          value={seo_title}
+          text={config.text}
+          label={config.label}
+          type={config.type}
+          id={config.id}
+          value={config.value}
           handleChange={this.handleChange}
         />
       </form>
@@ -29,6 +30,3 @@ class FormContainer extends Component {
   }
 }
 export default FormContainer;
-
-const wrapper = document.getElementById("create-article-form");
-wrapper ? ReactDOM.render(<FormContainer />, wrapper) : false;
