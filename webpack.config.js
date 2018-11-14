@@ -2,8 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 module.exports = {
   devtool: 'eval-source-map',
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
@@ -13,21 +12,21 @@ module.exports = {
       {
         type: 'javascript/auto',
         test: /\.json$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ],
-         include: /\.\/config/
+        use: [{
+          loader: 'file-loader',
+          options: {}
+        }],
+        include: /\.\/config/
       },
       {
         test: /\.html$/,
-        use: [
-          {
-            loader: "html-loader"
-          }
-        ]
+        use: [{
+          loader: "html-loader"
+        }]
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -39,7 +38,7 @@ module.exports = {
   ],
   devServer: {
     port: 8999,
-   historyApiFallback: true,
-   inline: true
- }
+    historyApiFallback: true,
+    inline: true
+  }
 };
