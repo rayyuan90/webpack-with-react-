@@ -1,8 +1,8 @@
 {
-  "text":"标题",
-  "label":"hha",
+  "text":"测试标题",
+  "label":"这是label",
   "type":"text",
   "id":"seo_title",
-  "value":"holder",
+  "value":"输入文字",
   "seo-title":"测试数据"
 }
