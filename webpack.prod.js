@@ -1,37 +1,10 @@
+const merge = require('webpack-merge');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-module.exports = {
-  devtool: 'eval-source-map',
+const common = require('./webpack.common.js');
+module.exports = merge(common,{
+  devtool: 'hidden-source-map ',
   performance: {
   hints: process.env.NODE_ENV === 'production' ? "warning" : false
-  },
-  module: {
-    rules: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
-      },
-      {
-        type: 'javascript/auto',
-        test: /\.json$/,
-        use: [{
-          loader: 'file-loader',
-          options: {}
-        }],
-        include: /\.\/config/
-      },
-      {
-        test: /\.html$/,
-        use: [{
-          loader: "html-loader"
-        }]
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
   },
   plugins: [
     new HtmlWebPackPlugin({
@@ -40,8 +13,8 @@ module.exports = {
     })
   ],
   devServer: {
-    port: 8999,
+    port: 8199,
     historyApiFallback: true,
     inline: true
   }
-};
+});
