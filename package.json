@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack"
+    "dev1": "webpack-dev-server --inline --hot --mode development --env dev",
+    "dev": "webpack-dev-server --open --mode development --env dev",
+    "prod": "webpack-dev-server --open --mode production --env prod",
+    "build": "webpack",
+    "build:dev": "webpack --env dev --mode development --progress --profile --colors",
+    "build:prod": "webpack --env prod --progress --profile --colors"
   },
   "keywords": [],
   "author": "",
